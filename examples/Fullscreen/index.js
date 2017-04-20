@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export default class FullScreen extends React.Component {
   state = {
@@ -10,30 +10,30 @@ export default class FullScreen extends React.Component {
   onDragEnter = () => {
     this.setState({
       dropzoneActive: true
-    });
+    })
   }
 
   onDragLeave = () => {
     this.setState({
       dropzoneActive: false
-    });
+    })
   }
 
-  onDrop = (files) => {
+  onDrop = files => {
     this.setState({
       files,
       dropzoneActive: false
-    });
+    })
   }
 
   applyMimeTypes(event) {
     this.setState({
       accept: event.target.value
-    });
+    })
   }
 
   render = () => {
-    const { accept, files, dropzoneActive } = this.state;
+    const { accept, files, dropzoneActive } = this.state
     const overlayStyle = {
       position: 'absolute',
       top: 0,
@@ -44,7 +44,7 @@ export default class FullScreen extends React.Component {
       background: 'rgba(0,0,0,0.5)',
       textAlign: 'center',
       color: '#fff'
-    };
+    }
     return (
       <Dropzone
         disableClick
@@ -54,25 +54,21 @@ export default class FullScreen extends React.Component {
         onDragEnter={this.onDragEnter}
         onDragLeave={this.onDragLeave}
       >
-        { dropzoneActive && <div style={overlayStyle}>Drop files...</div> }
+        {dropzoneActive && <div style={overlayStyle}>Drop files...</div>}
         <div>
           <h1>My awesome app</h1>
-          <label htmlFor="mimetypes">Enter mime types you want to accept: </label>
-          <input
-            type="text"
-            id="mimetypes"
-            onChange={this.applyMimeTypes}
-          />
+          <label htmlFor="mimetypes">
+            Enter mime types you want to accept:{' '}
+          </label>
+          <input type="text" id="mimetypes" onChange={this.applyMimeTypes} />
 
           <h2>Dropped files</h2>
           <ul>
-            {
-              files.map(file => <li>{file.name} - {file.size} bytes</li>)
-            }
+            {files.map(file => <li>{file.name} - {file.size} bytes</li>)}
           </ul>
 
         </div>
       </Dropzone>
-    );
+    )
   }
 }

@@ -2,6 +2,6 @@
 
 global.window.URL = {
   createObjectURL: function createObjectURL(arg) {
-    return 'data://' + arg.name;
+    return 'data://' + arg.name
   }
-};
+}

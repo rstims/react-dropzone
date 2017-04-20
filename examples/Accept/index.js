@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export default class Accept extends React.Component {
   state = {
@@ -12,27 +12,31 @@ export default class Accept extends React.Component {
         <div className="dropzone">
           <Dropzone
             accept="image/jpeg, image/png"
-            onDrop={(accepted, rejected) => { this.setState({ accepted, rejected }); }}
+            onDrop={(accepted, rejected) => {
+              this.setState({ accepted, rejected })
+            }}
           >
-            <p>Try dropping some files here, or click to select files to upload.</p>
+            <p>
+              Try dropping some files here, or click to select files to upload.
+            </p>
             <p>Only *.jpeg and *.png images will be accepted</p>
           </Dropzone>
         </div>
         <aside>
           <h2>Accepted files</h2>
           <ul>
-            {
-              this.state.accepted.map(file => <li key={file.name}>{file.name} - {file.size} bytes</li>)
-            }
+            {this.state.accepted.map(file => (
+              <li key={file.name}>{file.name} - {file.size} bytes</li>
+            ))}
           </ul>
           <h2>Rejected files</h2>
           <ul>
-            {
-              this.state.rejected.map(file => <li key={file.name}>{file.name} - {file.size} bytes</li>)
-            }
+            {this.state.rejected.map(file => (
+              <li key={file.name}>{file.name} - {file.size} bytes</li>
+            ))}
           </ul>
         </aside>
       </section>
-    );
+    )
   }
 }
